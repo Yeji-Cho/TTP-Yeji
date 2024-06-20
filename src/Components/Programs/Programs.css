@@ -40,6 +40,13 @@
     padding-top: 0; */
     background: rgba(0, 15, 152, 0.4); /* Only change the background on hover */
 }
+.program-content { /* when a program is active */
+    padding: 20px;
+    background-color: white;
+    color: black; /* Change as per your design */
+    border-radius: 10px;
+    margin-top: 10px;
+}
 /* ----- media query ---------- */
 
 @media (max-width: 650px){
