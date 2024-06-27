@@ -10,6 +10,16 @@ import Contact from './Components/Contact/Contact'
 import Footer from './Components/Footer/Footer'
 
 const App = () => {
+
+  const [checklist, setChecklist] = useState([]);
+
+    useEffect(() => {
+        fetch('/api/checklist')
+            .then(response => response.json())
+            .then(data => setChecklist(data))
+            .catch(error => console.error('Error fetching checklist:', error));
+    }, []);
+
   return (
     <div>
       <Navbar/>
@@ -25,6 +35,19 @@ const App = () => {
         <Title subTitle='Contact Us' title='Get in Touch'/>
         <Contact/>
         <Footer/>
+        
+        {/* Display Checklist */}
+        <div className="checklist-section">
+                    <h2>Checklist</h2>
+                    <ul>
+                        {checklist.map((item, index) => (
+                            <li key={index}>
+                                <span>{item.task} - {item.done ? 'Done' : 'Pending'}</span>
+                                {item.url && <a href={item.url}>Read More</a>}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
       </div>
 
     </div>
