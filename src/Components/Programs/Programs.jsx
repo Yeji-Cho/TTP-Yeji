@@ -58,7 +58,7 @@ const Programs = () => {
           <p>Educational Materials</p>
         </div>
       </div>
-      {/* Conditionally render the checklist when the Educational Materials program is active
+      {/* Conditionally render the checklist when the Educational Materials program is active */}
       {activeProgramId === 1 && (
         <ul>
           {checklist.map((item, index) => (
@@ -68,7 +68,7 @@ const Programs = () => {
             </li>
           ))}
         </ul>
-      )} */}
+      )}
       <div className="program" onClick={() => handleProgramClick(2)}>
         <img src={program_2} alt="" />
         <div className="caption">
