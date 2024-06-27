@@ -3,11 +3,15 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 app = Flask(__name__, template_folder='templates')
 
 checklist = [
-    {"task": "Sample Task", "done": False, "url": None},  # Normal checklist item
+    # {"task": "Sample Task", "done": False, "url": None},  # Normal checklist item
     {"task": "Gender Identity Dictionary", "done": False, "url": "https://www.medicalnewstoday.com/articles/types-of-gender-identity#history"},
     {"task": "Article: Are You Aware of Your Biases?", "done": False, "url": "https://hbr.org/2022/02/are-you-aware-of-your-biases"},
     {"task": "5 Tips for Managing Unconscious Bias at Work", "done": False, "url": "https://www.cornerstoneondemand.com/resources/article/5-tips-managing-unconscious-bias-work/"}
 ]
+
+@app.route('/api/checklist')
+def get_checklist():
+    return jsonify(checklist)
 
 @app.route('/')
 def index():
@@ -15,10 +19,10 @@ def index():
 
 @app.route('/add', methods=['POST'])
 def add():
-    todo = request.form['todo']
-    checklist.append({"task": todo, "done": False})
+    todo = request.form['todo'] # Get data from frontend 
+    material = {"task": todo, "done": False, "url": None} # Create dictionary
+    checklist.append(material)
     return redirect(url_for('index'))
-
 
 @app.route("/edit/<int:index>", methods=['GET', 'POST'])
 def edit(index):

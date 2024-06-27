@@ -12,6 +12,7 @@ const Programs = () => {
 
   const [programs, setPrograms] = useState([]);
   const [activeProgramId, setActiveProgramId] = useState(null);
+  const [checklist, setChecklist] = useState([]);
 
   useEffect(() => {
     const fetchPrograms = async () => {
@@ -37,6 +38,17 @@ const Programs = () => {
     setPrograms(newPrograms);
   };
 
+  const handleProgramClick = async (programId) => {
+    if (programId === 1) {  // '1' is the ID for Educational Materials
+      const response = await fetch('http://127.0.0.1:5000/api/checklist');
+      const data = await response.json();
+      setActiveProgramId(programId);
+      setChecklist(data);
+    } else {
+      setActiveProgramId(programId);
+    }
+  };
+
   return (
     <div className='programs'>
       <div className="program" onClick={() => handleProgramClick(1)}>
@@ -46,6 +58,17 @@ const Programs = () => {
           <p>Educational Materials</p>
         </div>
       </div>
+      {/* Conditionally render the checklist when the Educational Materials program is active
+      {activeProgramId === 1 && (
+        <ul>
+          {checklist.map((item, index) => (
+            <li key={index}>
+              <input type="checkbox" checked={item.done} onChange={() => {}} disabled />
+              {item.url ? <a href={item.url} style={{ textDecoration: item.done ? 'line-through' : 'none' }}>{item.task}</a> : <span>{item.task}</span>}
+            </li>
+          ))}
+        </ul>
+      )} */}
       <div className="program" onClick={() => handleProgramClick(2)}>
         <img src={program_2} alt="" />
         <div className="caption">
