@@ -13,9 +13,9 @@ checklist = [
 def get_checklist():
     return jsonify(checklist)
 
-@app.route('/')
-def index():
-    return render_template("index.html", checklist=checklist)
+# @app.route('/')
+# def index():
+#     return render_template("index.html", checklist=checklist)
 
 @app.route('/add', methods=['POST'])
 def add():
@@ -24,14 +24,14 @@ def add():
     checklist.append(material)
     return redirect(url_for('index'))
 
-@app.route("/edit/<int:index>", methods=['GET', 'POST'])
-def edit(index):
-    todo = checklist[index]
-    if request.method == 'POST':
-        todo['task'] = request.form['todo']
-        return redirect(url_for('index'))
-    else:
-        return render_template('edit.html', todo=todo, index=index)
+# @app.route("/edit/<int:index>", methods=['GET', 'POST'])
+# def edit(index):
+#     todo = checklist[index]
+#     if request.method == 'POST':
+#         todo['task'] = request.form['todo']
+#         return redirect(url_for('index'))
+#     else:
+#         return render_template('edit.html', todo=todo, index=index)
 
 
 @app.route("/check/<int:index>")

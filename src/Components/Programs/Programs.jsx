@@ -42,6 +42,7 @@ const Programs = () => {
     if (programId === 1) {  // '1' is the ID for Educational Materials
       const response = await fetch('http://127.0.0.1:5000/api/checklist');
       const data = await response.json();
+      print(data);
       setActiveProgramId(programId);
       setChecklist(data);
     } else {
