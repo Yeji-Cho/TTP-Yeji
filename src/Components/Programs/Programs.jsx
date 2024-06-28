@@ -8,7 +8,7 @@ import program_icon_3 from '../../assets/program-icon-3.png'
 import React, { useState, useEffect } from 'react';
 import { getPrograms } from '../../API.js';
 
-const Programs = () => {
+const Programs = ({ handleNavigation }) => {
 
   const [programs, setPrograms] = useState([]);
   const [activeProgramId, setActiveProgramId] = useState(null);
@@ -40,11 +40,8 @@ const Programs = () => {
 
   const handleProgramClick = async (programId) => {
     if (programId === 1) {  // '1' is the ID for Educational Materials
-      const response = await fetch('http://127.0.0.1:5000/api/checklist');
-      const data = await response.json();
-      print(data);
+      handleNavigation("/checklist");
       setActiveProgramId(programId);
-      setChecklist(data);
     } else {
       setActiveProgramId(programId);
     }
@@ -52,7 +49,7 @@ const Programs = () => {
 
   return (
     <div className='programs'>
-      <div className="program" onClick={() => handleProgramClick(1)}>
+      <div to="/checklist" className="program" onClick={() => handleProgramClick(1)}>
         <img src={program_1} alt="" />
         <div className="caption">
           <img src={program_icon_1} alt="" />
