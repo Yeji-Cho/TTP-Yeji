@@ -1,4 +1,4 @@
-import './index.css'
+
 import React from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import Hero from '../../Components/Hero/Hero'
@@ -9,7 +9,7 @@ import Gallery from '../../Components/Gallery/Gallery'
 import Events from '../../Components/Events/Events'
 import Contact from '../../Components/Contact/Contact'
 import Footer from '../../Components/Footer/Footer'
-import { Route, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
 
