@@ -41,7 +41,7 @@ const Checklist = () => {
   }
 
   const handleEdit = (index) => {
-    navigate('/edit/', {state:{index: index}});
+    navigate('/edit/'+index);
   }
 
   const buildList = () => {

@@ -14,29 +14,29 @@ const Programs = ({ handleNavigation }) => {
   const [activeProgramId, setActiveProgramId] = useState(null);
   const [checklist, setChecklist] = useState([]);
 
-  useEffect(() => {
-    const fetchPrograms = async () => {
-      const data = await getPrograms();
-      setPrograms(data);
-    };
-    fetchPrograms();
-  }, []);
+  // useEffect(() => {
+  //   const fetchPrograms = async () => {
+  //     const data = await getPrograms();
+  //     setPrograms(data);
+  //   };
+  //   fetchPrograms();
+  // }, []);
 
-  const handleMaterialClick = (programId, materialIndex) => {
-    const newPrograms = programs.map(program => {
-      if (program.id === programId) {
-        const newMaterials = program.materials.map((material, index) => {
-          if (index === materialIndex) {
-            return { ...material, completed: true };
-          }
-          return material;
-        });
-        return { ...program, materials: newMaterials };
-      }
-      return program;
-    });
-    setPrograms(newPrograms);
-  };
+  // const handleMaterialClick = (programId, materialIndex) => {
+  //   const newPrograms = programs.map(program => {
+  //     if (program.id === programId) {
+  //       const newMaterials = program.materials.map((material, index) => {
+  //         if (index === materialIndex) {
+  //           return { ...material, completed: true };
+  //         }
+  //         return material;
+  //       });
+  //       return { ...program, materials: newMaterials };
+  //     }
+  //     return program;
+  //   });
+  //   setPrograms(newPrograms);
+  // };
 
   const handleProgramClick = async (programId) => {
     if (programId === 1) {  // '1' is the ID for Educational Materials
