@@ -6,24 +6,18 @@ const Checklist = () => {
 
   const [checklist, setChecklist] = useState([]);
   const [changed, setChanged] = useState(true);
+  const [task, setTask] = useState('');
+  const [url, setUrl] = useState('');
 
   const navigate = useNavigate();
 
-  const handleNavigation = (path, props) => {
-    navigate(path, props);
-  };
-
   useEffect(() => {
-      fetch('/api/checklist')
-      .then(response => response.json())
-      .then(data => setChecklist(data))
-      .catch(error => console.error('Error fetching checklist:', error));
-    
+    fetch('/api/checklist')
+    .then(response => response.json())
+    .then(data => setChecklist(data))
+    .then(setChanged(false))
+    .catch(error => console.error('Error fetching checklist:', error));
   }, [changed]);
-
-  useEffect(() => {
-    setChanged(false);
-  }, [checklist])
 
   const handleCheck = (index) => {
     fetch('/api/check/' + index)
@@ -35,23 +29,43 @@ const Checklist = () => {
       method: 'DELETE',
       
     })
-      .then(handleNavigation('/checklist'))
-      .then(setChanged(true))
-      .catch(error => console.log(error))
+    .then(setChanged(true))
+    .catch(error => console.log(error))
   }
 
   const handleEdit = (index) => {
     navigate('/edit/'+index);
   }
 
+  const handleOnSubmit = (event) => {
+    event.preventDefault();
+    fetch('/api/add', {
+        method: 'POST',
+        headers : {
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify({
+          todo:{
+            task: task,
+            done: false,
+            url: url
+          }
+        })
+    })
+    .then(setChanged(true))
+    .then(setUrl(''))
+    .then(setTask(''))
+    .catch(error => console.log(error))
+}
+
   const buildList = () => {
 
     const listItems = checklist.map((todo, index) => 
-      <li key={index}>
-          <input type="checkbox" name="done" checked={ todo['done'] } disabled/>
+      <li key={index} className='list-item'>
+          <input className='checkbox' type="checkbox" name="done" checked={ todo['done'] } disabled/>
           <div className="main-link">
             {
-              todo['url'] 
+              todo['url'] && todo['url'] != ''
               ? <a href={ todo['url'] } style={{ textDecoration: todo['done'] ? 'line-through' :'none' }}>{ todo['task'] }</a>
               : <span style={{ textDecoration: todo['done'] ? 'line-through' :'none' }}>{ todo['task'] }</span>
             }
@@ -63,13 +77,18 @@ const Checklist = () => {
           </div>
       </li>
     );
-    return <ul>{listItems}</ul>;
+    return <ul className='checklist'>{listItems}</ul>;
   }
 
   return (
-    <div>
-      <h1>Learn the Materials and Track your Learning!</h1>
+    <div className='checklist-div'>
+      <h1 className='checklist-title'>Learn the Materials and Track your Learning!</h1>
       {buildList()}
+      <form onSubmit={handleOnSubmit}>
+        <input type="text" name="task" value={task} onChange={(e) => setTask(e.target.value)} placeholder="Title of your material (optional)"/>
+        <input type="text" name="url" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="URL (optional)"/>
+        <button className='form-button' type="submit">Add</button>
+      </form>
     </div>
   )
 }

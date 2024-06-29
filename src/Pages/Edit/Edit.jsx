@@ -14,7 +14,8 @@ const Edit = ( ) => {
         navigate(path);
     };
 
-    const handleOnSubmit = () => {
+    const handleOnSubmit = (event) => {
+        event.preventDefault();
         fetch('/api/edit/' + index, {
             method: 'POST',
             headers : {
@@ -24,14 +25,14 @@ const Edit = ( ) => {
                 task: task
             })
         })
-            .then(handleNavigation('/checklist'))
-            .catch(error => console.log(error))
+        .then(handleNavigation('/checklist'))
+        .catch(error => console.log(error))
     }
     
     return (
         <form onSubmit={handleOnSubmit}>
-            <input type="text" name="todo" value={task} onChange={(e) => setTask(e.target.value)}/>
-            <button type="submit">Save</button>
+            <input type="text" name="task" value={task} onChange={(e) => setTask(e.target.value)} placeholder='Enter task title'/>
+            <button className='form-button' type="submit">Save</button>
         </form>
     )
 }
