@@ -81,7 +81,7 @@ const Programs = ({ handleNavigation }) => {
           <p>Community</p>
         </div>
       </div>
-      {/* Render the programs fetched from the API */}
+      {/* Render the programs fetched from the API
       {programs.map((program) => (
         <div key={program.id} className="program" onClick={() => handleProgramClick(program.id)}>
           <img src={require(`../../assets/${program.icon}`)} alt={program.title} />
@@ -95,7 +95,7 @@ const Programs = ({ handleNavigation }) => {
             </div>
           )}
         </div>
-      ))}
+      ))} */}
     </div>
   );
 };
