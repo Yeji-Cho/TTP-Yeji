@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+import json
+from flask import Flask, request, Response
 
 app = Flask(__name__, template_folder='templates')
 
@@ -11,39 +12,31 @@ checklist = [
 
 @app.route('/api/checklist')
 def get_checklist():
-    return jsonify(checklist)
+    return Response(json.dumps(checklist),  mimetype='application/json')
 
-# @app.route('/')
-# def index():
-#     return render_template("index.html", checklist=checklist)
-
-@app.route('/add', methods=['POST'])
+@app.route('/api/add', methods=['POST'])
 def add():
-    todo = request.form['todo'] # Get data from frontend 
-    material = {"task": todo, "done": False, "url": None} # Create dictionary
-    checklist.append(material)
-    return redirect(url_for('index'))
+    todo = request.json['todo'] # Get data from frontend 
+    checklist.append(todo)
+    return Response("{}", status=200, mimetype='application/json')
 
-# @app.route("/edit/<int:index>", methods=['GET', 'POST'])
-# def edit(index):
-#     todo = checklist[index]
-#     if request.method == 'POST':
-#         todo['task'] = request.form['todo']
-#         return redirect(url_for('index'))
-#     else:
-#         return render_template('edit.html', todo=todo, index=index)
+@app.route("/api/edit/<int:index>", methods=['POST'])
+def edit(index):
+    todo = checklist[index]
+    todo['task'] = request.json['task']
+    return Response("{}", status=200, mimetype='application/json')
 
 
-@app.route("/check/<int:index>")
+@app.route("/api/check/<int:index>")
 def check(index):
     checklist[index]['done'] = not checklist[index]['done']
-    return redirect(url_for('index'))
+    return Response("{}", status=200, mimetype='application/json')
 
 
-@app.route("/delete/<int:index>")
+@app.route("/api/delete/<int:index>", methods=['DELETE'])
 def delete(index):
     del checklist[index]
-    return redirect(url_for('index'))
+    return Response("{}", status=200, mimetype='application/json')
 
 
 if __name__ == '__main__':
