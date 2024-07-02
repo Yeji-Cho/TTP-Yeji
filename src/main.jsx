@@ -10,6 +10,7 @@ import Edit, {
   loader as indexLoader,
 }from './Pages/Edit/Edit.jsx'
 import Dashboard from './Pages/Dashboard/Dashboard.jsx'
+import Interactive from "./Pages/Interactive/Interactive.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
     element: <Edit/>,
     loader: indexLoader,
   },
+  {
+    path: '/interactive',
+    element: <Interactive/>,
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

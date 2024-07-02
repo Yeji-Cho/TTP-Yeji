@@ -15,6 +15,7 @@ const Checklist = () => {
     fetch('/api/checklist')
     .then(response => response.json())
     .then(data => setChecklist(data))
+    .then(data => console.log(data))
     .then(setChanged(false))
     .catch(error => console.error('Error fetching checklist:', error));
   }, [changed]);
