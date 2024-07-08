@@ -1,0 +1,82 @@
+nav{
+    width: 100%;
+    /* background: #333; */
+    color: #fff;
+    opacity: 0.9;
+    padding: 4px 0;
+    position: fixed; /* This navbar will be fixed at the top when we scroll the webpage */
+    top: 0;
+    left: 0;
+    display: flex; /* align content side by side */
+    align-items: center;
+    justify-content: space-between; /* logo leftside, text rightside */
+    z-index: 10; /* overlap all the elements on the webpage when we scroll */
+}
+.logo{
+    width: 180px;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 5px 20px;
+    font-size: 16px;
+}
+.dark-nav{
+    background: #fff;
+    transition: 0.5s;
+    color: #000000;
+}
+.dark-nav .btn{
+    background: #212121;
+    color: #fff;
+    padding: 14px 25px;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu-icon{
+    display: none;
+}
+/* ----- media query ---------- */
+
+@media (max-width: 1000px){
+    .logo{
+        width: 140px;
+    }
+    nav ul li{
+        margin: 10px 15px;
+    }
+}
+@media (max-width: 840px){
+    nav{
+        padding: 15px 0;
+    }
+    nav ul{
+        position: fixed;
+        top: 0;
+        right: 0px;
+        bottom: 0;
+        background: #e70000;
+        z-index: -1;
+        width: 200px;
+        padding-top: 70px;
+        transition: 0.5s;
+    }
+    nav ul li{
+        display: block;
+        margin: 25px 40px;
+    }
+    .menu-icon{
+        display: block;
+        width: 30px;
+        cursor: pointer;
+    }
+    .hide-mobile-menu{
+        right: -200px;
+    }
+}
