@@ -2,7 +2,9 @@
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f9;
     margin: 0;
-    padding: 20px;
+    padding: 50px;
+    padding-right: 70px;
+    padding-left: 70px;
     color: #333;
 }
 
@@ -10,7 +12,7 @@
     color: #000; /* Bold black color for the heading */
     font-size: 40px; /* Bigger font size */
     font-weight: bold; /* Bold font weight */
-    padding-bottom: 18px;
+    padding-bottom: 30px;
 }
 
 .checklist {
@@ -20,20 +22,26 @@
 
 .list-item {
     background: white;
-    margin-bottom: 10px;
-    padding: 10px;
+    margin-bottom: 15px;
+    padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     display: flex;
     align-items: center;
 }
 
-.checkbox {
+/* .checkbox {
     padding: 8px;
     width: 300px;
-    margin-right: 10px;
     border-radius: 4px;
     border: 1px solid #ccc;
+} */
+
+.checkbox {
+    margin-right: 10px; /* Reduced space between checkbox and text */
+    padding: 8px;
+    margin-left: 20px;
+    flex: none; /* Ensure checkbox doesn’t grow */
 }
 
 .form-button {
@@ -49,14 +57,18 @@
     background-color: #c9302c; /* Darker red on hover */
 }
 
-.main-link {
-    margin-right: 40px; /* Large gap after main link */
-    font-size: 16px; /* Larger font size for main links */
-    font-weight: bold; /* Bold text for visibility */
-}
+/* .main-link {
+    margin-right: 40px;
+    font-size: 16px;
+    font-weight: bold;
+} */
 
-.action-links {
-    /* No additional style needed here, just grouping */
+.main-link {
+    margin-right: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    flex-grow: 1;
+    padding-left: 20px;
 }
 
 .action-link {
@@ -65,10 +77,67 @@
     color: #333;
 }
 
+.action-links {
+    display: flex;
+    align-items: center;
+}
+
 span:hover, .action-link:hover {
     text-decoration: underline;
+
 }
 
 span {
-    margin-right: 10px;
+    margin-right: 25px;
+    cursor: pointer;
+}
+
+input[type="text"], .form-button {
+    font-size: 16px; /* Larger font size for better visibility */
+    padding: 15px 20px; /* Increased padding for a larger feel */
+    margin: 8px; /* Maintain a consistent margin around elements */
+    border: 1px solid #ccc; /* Stylish border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding and border in the width and height */
+}
+
+input[type="text"], .form-button {
+    font-size: 16px; /* Larger font size for better visibility */
+    padding: 15px 20px; /* Increased padding for a larger feel */
+    margin: 8px; /* Maintain a consistent margin around elements */
+    border: 1px solid #ccc; /* Stylish border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding and border in the width and height */
+    display: inline-block; /* Keeps the input fields and button in line */
+}
+
+/* Adjusting the width for the first two text boxes */
+input[type="text"]:nth-child(1), input[type="text"]:nth-child(2) {
+    width: calc(30% - 46px); /* Slightly smaller width */
+}
+
+/* Adjusting the width for the button to make it longer */
+.form-button {
+    background-color: #d9534f; /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border for the button */
+    cursor: pointer; /* Cursor changes to pointer to indicate clickable */
+    width: calc(40% - 46px); /* Longer width */
+}
+
+input[type="text"]:focus, .form-button:focus {
+    border-color: #4A90E2; /* Highlight on focus */
+    outline: none; /* Removes default focus outline */
+}
+
+.form-button:hover {
+    background-color: #c9302c; /* Darker shade on hover for better interaction */
+}
+
+.form-container {
+    display: flex;        /* Enables flexbox */
+    justify-content: center; /* Centers items horizontally in the container */
+    align-items: center;  /* Centers items vertically in the container */
+    height: 100vh;        /* Full viewport height to center content vertically in the viewport */
+    padding: 20px;        /* Adds padding around the content */
 }

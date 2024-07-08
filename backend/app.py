@@ -1,13 +1,19 @@
 import json
 from flask import Flask, request, Response
+# from flask_cors import CORS
 
 app = Flask(__name__, template_folder='templates')
+# CORS(app, origins="*")
 
 checklist = [
     # {"task": "Sample Task", "done": False, "url": None},  # Normal checklist item
     {"task": "Gender Identity Dictionary", "done": False, "url": "https://www.medicalnewstoday.com/articles/types-of-gender-identity#history"},
+    {"task": "Diversity, Equity and Inclusion (DEI) in the Workplace", "done": False, "url":"https://builtin.com/diversity-inclusion"},
     {"task": "Article: Are You Aware of Your Biases?", "done": False, "url": "https://hbr.org/2022/02/are-you-aware-of-your-biases"},
-    {"task": "5 Tips for Managing Unconscious Bias at Work", "done": False, "url": "https://www.cornerstoneondemand.com/resources/article/5-tips-managing-unconscious-bias-work/"}
+    {"task": "5 Tips for Managing Unconscious Bias at Work", "done": False, "url": "https://www.cornerstoneondemand.com/resources/article/5-tips-managing-unconscious-bias-work/"},
+    {"task": "Sample Diversity, Equity and Inclusion Policies", "done": False, "url": "https://www.utahcli.org/diversity-policies/"},
+    {"task": "10 EFFECTIVE DIVERSITY AND INCLUSION STRATEGIES", "done": False, "url": "https://www.diversityintech.co.uk/10-effective-diversity-and-inclusion-strategies/"},
+    {"task": "Types of Gender Diversity Around the World", "done": False, "url": "https://outrightinternational.org/gender-diversity"}
 ]
 
 @app.route('/api/checklist')
@@ -40,4 +46,4 @@ def delete(index):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=8000, debug=True)
