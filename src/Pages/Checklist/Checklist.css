@@ -44,25 +44,6 @@
     flex: none; /* Ensure checkbox doesn’t grow */
 }
 
-.form-button {
-    padding: 10px 20px;
-    background-color: #d9534f; /* Red color for the button */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.form-button:hover {
-    background-color: #c9302c; /* Darker red on hover */
-}
-
-/* .main-link {
-    margin-right: 40px;
-    font-size: 16px;
-    font-weight: bold;
-} */
-
 .main-link {
     margin-right: 40px;
     font-size: 16px;
@@ -92,23 +73,16 @@ span {
     cursor: pointer;
 }
 
-input[type="text"], .form-button {
-    font-size: 16px; /* Larger font size for better visibility */
-    padding: 15px 20px; /* Increased padding for a larger feel */
-    margin: 8px; /* Maintain a consistent margin around elements */
-    border: 1px solid #ccc; /* Stylish border */
-    border-radius: 4px; /* Rounded corners */
-    box-sizing: border-box; /* Include padding and border in the width and height */
-}
 
 input[type="text"], .form-button {
-    font-size: 16px; /* Larger font size for better visibility */
+    font-size: 15px; /* Larger font size for better visibility */
     padding: 15px 20px; /* Increased padding for a larger feel */
-    margin: 8px; /* Maintain a consistent margin around elements */
+    margin-right: 8px; /* Maintain a consistent margin around elements */
     border: 1px solid #ccc; /* Stylish border */
     border-radius: 4px; /* Rounded corners */
     box-sizing: border-box; /* Include padding and border in the width and height */
-    display: inline-block; /* Keeps the input fields and button in line */
+    display: inline-flex; /* Keeps the input fields and button in line */
+    justify-content: center;
 }
 
 /* Adjusting the width for the first two text boxes */
@@ -118,11 +92,15 @@ input[type="text"]:nth-child(1), input[type="text"]:nth-child(2) {
 
 /* Adjusting the width for the button to make it longer */
 .form-button {
-    background-color: #d9534f; /* Button color */
+    background-color: #e70000; /* Button color */
     color: white; /* Text color */
     border: none; /* No border for the button */
     cursor: pointer; /* Cursor changes to pointer to indicate clickable */
-    width: calc(40% - 46px); /* Longer width */
+    width: calc(10% - 40px);
+    height: 50px; /* Increased height */
+    margin-left: 22px;
+    margin-top: 25px;
+    font-size: 17px; /* Larger font size */
 }
 
 input[type="text"]:focus, .form-button:focus {
@@ -131,7 +109,7 @@ input[type="text"]:focus, .form-button:focus {
 }
 
 .form-button:hover {
-    background-color: #c9302c; /* Darker shade on hover for better interaction */
+    background-color: #ca0000; /* Darker shade on hover for better interaction */
 }
 
 .form-container {

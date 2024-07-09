@@ -1,4 +1,4 @@
-.quizbox{
+/* .quizbox{
   width: 640px;
   margin: auto;
   margin-top: 150px;
@@ -45,4 +45,60 @@
 .quizbox .index {
   margin: auto;
   font-size: 18px;
+} */
+
+
+.header {
+  width: 100%;
+  color: black;
+  padding: 20px 0 40px 40px;
+  font-size: 20px;
+  font-weight: 600;
+  justify-content: center;
 }
+
+.quizbox{
+  width: 850px; /* Increased width */
+  margin: 20px auto 50px; /* Adjusted margin for better vertical spacing */
+  background: white;
+  color: #262626;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 10px;
+  padding: 40px 50px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Added subtle shadow for depth */
+}
+
+.quizbox hr{
+  height: 2px;
+  border: none;
+  background: #707070;
+}
+
+.quizbox h2{
+  font-size: 25px;
+  font-weight: 500;
+  padding: 5px 10px 30px 15px;
+}
+
+.quizbox button{
+  margin: auto; /* Centered button and added vertical spacing */
+  width: 320px; /* Increased width */
+  height: 120px; /* Increased height */
+  background: #e70000;
+  color: #fff;
+  font-size: 20px; /* Adjusted font size for better readability */
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0 15px; /* Added padding for text spacing */
+  display: flex; /* Ensures contents are centered */
+  align-items: center;
+  justify-content: center;
+}
+
+/* .quizbox .index {
+  margin: auto;
+  font-size: 15px;
+} */

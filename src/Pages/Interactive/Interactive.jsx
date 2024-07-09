@@ -58,7 +58,36 @@ const scenarios = [
     nextIdB: "G"
   },
   {
-    
+    id: "D", // Correct Answer (Option A) for Scenario B
+    scenario: "Alice apologizes to Bob and they discuss how to accommodate everyone's needs in the future. This builds trust and respect. How should the team move forward?",
+    optionA: "Implement regular diversity and inclusion training sessions.",
+    optionB: "Consider the matter resolved and make no further changes.",
+    nextIdA: "H",
+    nextIdB: "I"
+  },
+  {
+    id: "E", // Incorrect Answer (Option B) for Scenario B
+    scenario: "By not making any changes, Alice risks alienating not only Bob but other team members who might feel their needs are also overlooked. What should Alice reconsider?",
+    optionA: "Revisit her decision and seek advice on how to be more inclusive.",
+    optionB: "Continue as planned and address any issues if they arise later.",
+    nextIdA: "J",
+    nextIdB: "K"
+  },
+  {
+    id: "F", // Correct Answer (Option A) for Scenario C
+    scenario: "In the meeting, various team members express the importance of recognizing cultural and personal needs in team activities. What should be the next step?",
+    optionA: "Create a committee to plan culturally inclusive events.",
+    optionB: "Thank team members for their input but make no changes.",
+    nextIdA: "L",
+    nextIdB: "M"
+  },
+  {
+    id: "G", // Incorrect Answer (Option B) for Scenario C
+    scenario: "Ignoring the opportunity to improve, the team's morale slowly decreases as members feel their voices are unheard. How can Alice recover from this?",
+    optionA: "Solicit feedback through an anonymous survey to understand better the team's needs.",
+    optionB: "Maintain the status quo, assuming things will improve on their own.",
+    nextIdA: "N",
+    nextIdB: "O"
   }
 ]
 
@@ -74,14 +103,17 @@ const Interactive = () => {
   };
 
   return (
-    <div className='quizbox'>
-      <h2>Scenario: {scenarios.find(o => o.id === currentScenarioId).scenario}</h2>
-      <button onClick={() => buildScenario(currentScenarioId, scenarios.find(o => o.id === currentScenarioId).optionA)}>
-        {scenarios.find(o => o.id === currentScenarioId).optionA}
-      </button>
-      <button onClick={() => buildScenario(currentScenarioId, scenarios.find(o => o.id === currentScenarioId).optionB)}>
-        {scenarios.find(o => o.id === currentScenarioId).optionB}
-      </button>
+    <div>
+      <div className="header">Interactive Learning – Diversity & Inclusion Training</div>
+      <div className='quizbox'>
+        <h2>Scenario: {scenarios.find(o => o.id === currentScenarioId).scenario}</h2>
+        <button onClick={() => buildScenario(currentScenarioId, scenarios.find(o => o.id === currentScenarioId).optionA)}>
+          {scenarios.find(o => o.id === currentScenarioId).optionA}
+        </button>
+        <button onClick={() => buildScenario(currentScenarioId, scenarios.find(o => o.id === currentScenarioId).optionB)}>
+          {scenarios.find(o => o.id === currentScenarioId).optionB}
+        </button>
+      </div>
     </div>
   );
 };
